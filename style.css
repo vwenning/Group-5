@@ -1,4 +1,12 @@
 /* =========================================
     OCEAN THEME CSS STYLESHEET
     ========================================= */
-
+    
+/* Make GitHub star icons smaller */
+.link-github svg {
+  width: 12px;   /* adjust the size */
+  height: 12px;  /* keep it square */
+  vertical-align: middle; /* keeps it aligned with text */
+  margin-right: 4px; /* optional space before text */
+  fill: currentColor; /* inherits link text color */
+}
