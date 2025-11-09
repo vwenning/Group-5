@@ -10,3 +10,274 @@
   margin-right: 4px; /* optional space before text */
   fill: currentColor; /* inherits link text color */
 }
+
+/* ------------------------
+   Reset & Base Styles
+-------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fff; /* all white page */
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 200px; /* bottom space for waves */
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #016494;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff9a00;
+  text-decoration: underline;
+}
+
+/* ------------------------
+   Skip Link
+-------------------------*/
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: #016494;
+  color: #fff;
+  z-index: 100;
+  border-radius: 5px;
+}
+
+/* ------------------------
+   Header
+-------------------------*/
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+header h2 {
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+header p a {
+  font-weight: 600;
+}
+
+/* ------------------------
+   Navigation
+-------------------------*/
+nav {
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+nav li {
+  margin: 0.5rem 1rem;
+}
+
+nav a {
+  color: #016494;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #ff9a00;
+}
+
+/* ------------------------
+   Main Content
+-------------------------*/
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem 200px; /* padding bottom for waves */
+}
+
+article h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #016494;
+  border-bottom: 2px solid #a8dadc;
+  padding-bottom: 0.3rem;
+}
+
+article h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #0288d1;
+}
+
+article p, article li {
+  margin-bottom: 1rem;
+}
+
+ul li {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+blockquote {
+  border-left: 4px solid #a8dadc;
+  padding-left: 1rem;
+  color: #0277bd;
+  font-style: italic;
+  background: rgba(168, 218, 220, 0.1);
+  margin: 1rem 0;
+}
+
+/* ------------------------
+   Asides
+-------------------------*/
+aside {
+  background: #f0f8ff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+aside h2, aside h4 {
+  margin-bottom: 1rem;
+  color: #016494;
+}
+
+aside a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #0288d1;
+  font-weight: 600;
+}
+
+aside a:hover {
+  color: #ff9a00;
+}
+
+/* ------------------------
+   Footer
+-------------------------*/
+footer.page-footer {
+  background: #f5f5f5;
+  color: #222;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid #ddd;
+}
+
+footer a {
+  color: #016494;
+}
+
+footer a:hover {
+  color: #ff9a00;
+}
+
+/* ------------------------
+   Responsive Layout Enhancements
+-------------------------*/
+@media (min-width: 900px) {
+  main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+
+  aside#styles {
+    grid-column: 2;
+  }
+
+  article {
+    grid-column: 1;
+  }
+}
+
+/* ------------------------
+   Ocean Waves at Bottom
+-------------------------*/
+body::before,
+body::after,
+footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  bottom: 0;
+  background-repeat: repeat-x;
+  background-size: 200px 100px;
+}
+
+/* Lightest wave - front */
+body::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><path fill="%23a8dadc" d="M0 30 Q50 0 100 30 T200 30 V100 H0 Z"/></svg>');
+  z-index: 1;
+  animation: wave1 6s linear infinite;
+}
+
+/* Medium wave - middle */
+body::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><path fill="%237ec8e3" d="M0 40 Q50 10 100 40 T200 40 V100 H0 Z"/></svg>');
+  z-index: 2;
+  animation: wave2 8s linear infinite;
+}
+
+/* Darkest wave - back */
+footer::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><path fill="%234ea0c1" d="M0 50 Q50 20 100 50 T200 50 V100 H0 Z"/></svg>');
+  z-index: 3;
+  animation: wave3 10s linear infinite;
+}
+
+/* Animations */
+@keyframes wave1 {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 200px; }
+}
+
+@keyframes wave2 {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 200px; }
+}
+
+@keyframes wave3 {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 200px; }
+}
