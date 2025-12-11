@@ -1,47 +1,27 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;700;800&display=swap');
 
-/* fonts */
-@font-face {
-    font-family: "Baloo 2";
-    font-style: normal;
-    font-weight: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Bebas Neue";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-}
-
-/* global vars - OCEAN THEME UPDATES */
 :root {
-    /* Deep Ocean Blue */
+    /* Colors */
     --color-primary: #006994; 
-    /* Teal/Seafoam */
     --color-secondary: #00A896; 
-    /* Faded Teal for backgrounds */
     --color-secondary-faded: rgba(0, 168, 150, 0.8); 
-    /* Semi-transparent white (Frosted Glass) to show the ocean */
-    --color-background: rgba(244, 244, 248, 0.92); 
-    /* Sand color for borders */
-    --color-border: #E0E0E0; 
-    /* Darker Blue for hover */
+    --color-background: white; 
+    --color-border: white; 
     --color-btn-hover: #023E8A; 
     --color-text: #0b1d26;
     --color-paragraph: #2d3436;
-    --color-light: #fff;
-    /* Coral/Orange for links to contrast against blue */
+    --color-light: white;
     --color-anchor: #E76F51; 
-    
-    --font-family: "Baloo 2", sans-serif;
-    --font-weight-strong: 500;
-    --font-size-h1: 6rem;
+    /* Typography */
+    --font-family: "Lato", sans-serif;
+    --font-header: "Montserrat", sans-serif;
+    --font-weight-strong: 700;
+    --font-size-h1: 5rem;
     --font-size-h3: 2rem;
     --font-size-h4: 1.35rem;
-    --font-size-text: 1.15rem;
+    --font-size-text: 1.125rem;
+    --layout-width: 1440px; 
 }
 
 /* Reset Rules */
@@ -78,7 +58,7 @@ body {
 
 img {
     display: block;
-    max-width: 100%;
+    max-width: var(--layout-width);
 }
 
 input, button, textarea, select {
@@ -99,13 +79,13 @@ h1 {
 }
 
 #main h2 {
-    color: var(--color-primary); /* Changed to primary blue */
+    color: var(--color-primary);
     padding: 0.25em 0.5em;
     text-align: left;
-    border-left: 6px solid var(--color-secondary); /* Thicker teal border */
+    border-left: 6px solid var(--color-secondary); Thicker teal border
     font-size: 2em;
     background: rgba(255,255,255,0.7); /* Slight background for header */
-    border-radius: 0 10px 10px 0; /* Smooth edges like water */
+    border-radius: 0 10px 10px 0;
 }
 
 h3 { font-size: var(--font-size-h3); }
@@ -163,14 +143,13 @@ article section {
     align-items: flex-start;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    /* Added backdrop for readability over ocean */
     background: var(--color-background); 
     margin-bottom: 2rem;
     border-radius: 10px;
 }
 
 article .container, .page-footer .container, #styles .container {
-    width: 100%;
+    width: var(--layout-width);
     margin-right: auto;
     margin-left: auto;
 }
@@ -201,15 +180,14 @@ header {
     display: grid;
     min-height: 40vh;
     color: var(--color-primary);
-    /* Removed background-image here because body handles it */
 }
 
 header .container {
-    max-width: 40em;
+    max-width: var(--layout-width);
     margin: 3em auto;
     padding: 2.5rem;
-    background: var(--color-background); /* See-through glass */
-    backdrop-filter: blur(5px); /* Blurs the water behind the text */
+    background: var(--color-background);
+    backdrop-filter: blur(5px);
     border-left: 0.5em solid var(--color-secondary);
     border-radius: 0 15px 15px 0;
     position: relative;
@@ -219,7 +197,7 @@ header .container {
 header h1 {
     font-family: 'Bebas Neue';
     margin-bottom: 0.3em;
-    max-width: 300px;
+    max-width: var(--layout-width);
     text-align: left;
     color: var(--color-primary);
 }
@@ -277,7 +255,7 @@ nav ul a {
 nav ul li { margin: 0.25rem; }
 
 nav ul a::after {
-    width: 100%;
+    width: var(--layout-width);
     height: 3px;
     background-color: #fff; /* White foam underline */
     opacity: 0;
@@ -294,8 +272,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 #about section {
     flex: 1;
-    padding: 1em 4em;
-    /* Ensure glass effect is applied here */
+    padding: 4em 4em;
     background: var(--color-background);
     margin: 1rem;
     border-radius: 10px;
@@ -343,26 +320,26 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent; /* Gradient text */
+    color: transparent;
 }
 
 #guidelines .container {
-    padding: 2rem 4rem;
+    padding: 4rem 4rem;
     background: var(--color-background);
     border-radius: 10px;
 }
 
 /* Contribute Section */
 #contribute {
-    padding: 0em;
-    padding-top: 1em;
-    margin-top: 3em;
-    background-color: transparent; /* Let body bg show through gaps */
+    padding: 1em;
+    margin-top: 1em;
+    background-color: transparent;
 }
 
 #contribute section {
-    padding: 2rem 5rem;
+    padding: 4rem 5rem;
     background: var(--color-background); /* Glass effect */
+    
 }
 
 #contribute section ol {
@@ -410,7 +387,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 #contribute section:nth-child(2) {
-    padding-top: 0;
+    padding-top: 4rem;
     padding-bottom: 0;
 }
 
@@ -443,7 +420,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 /* Features Grid */
 .features {
     position: relative;
-    width: 100%;
+    width: var(--layout-width);
     grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
 }
 
@@ -514,7 +491,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 1em 4em;
+    padding: 4em 4em;
     background: var(--color-background); /* Glass */
     border-radius: 10px;
 }
@@ -698,7 +675,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 /* MEDIA QUERIES - Layout Adjustments */
-@media (max-width: 1010px) {
+@media (max-width: 1440px) {
     #about section, #guidelines .container { padding: 1em; }
     #contribute section { padding: 1em 2em; }
     #files .container { padding-left: 2em; padding-right: 2em; }
