@@ -36,6 +36,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* CORE BODY - FIXED BACKGROUND LOGIC */
@@ -49,11 +50,11 @@ body {
     font-family: var(--font-family);
 
     /* HERE IS THE FIXED BACKGROUND */
-   background-image: url('images/ocean.jpg');
+    background-image: url('images/ocean.jpg');
     background-repeat: no-repeat;
     background-position: center center;
-    background-attachment: fixed; /* This makes the image stay put */
-    background-size: cover;       /* This ensures it covers the whole screen */
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 img {
@@ -75,16 +76,16 @@ h1, h2, h3, h4 {
 h1 {
     font-size: var(--font-size-h1);
     font-size: clamp(2rem, 7vw, var(--font-size-h1));
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Added shadow for readability */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 #main h2 {
     color: var(--color-primary);
     padding: 0.25em 0.5em;
     text-align: left;
-    border-left: 6px solid var(--color-secondary); Thicker teal border
+    border-left: 6px solid var(--color-secondary);
     font-size: 2em;
-    background: rgba(255,255,255,0.7); /* Slight background for header */
+    background: rgba(255,255,255,0.7);
     border-radius: 0 10px 10px 0;
 }
 
@@ -96,7 +97,10 @@ p { margin: 0 0 1rem; }
 article .container *+h2 { margin-top: 4rem; }
 article .container *+h3 { margin-top: 2rem; }
 strong { font-weight: var(--font-weight-strong); }
-a { color: var(--color-anchor); }
+a { 
+    color: var(--color-anchor);
+    transition: color 0.3s ease;
+}
 
 /* Blockquote - Message in a bottle style */
 blockquote {
@@ -106,8 +110,16 @@ blockquote {
     margin: 2em 0;
     background-color: var(--color-primary);
     position: relative;
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 
+                inset 0 2px 5px rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+blockquote:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4), 
+                inset 0 2px 5px rgba(255,255,255,0.2);
 }
 
 blockquote strong {
@@ -143,9 +155,17 @@ article section {
     align-items: flex-start;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    background: var(--color-background); 
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     margin-bottom: 2rem;
     border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 article .container, .page-footer .container, #styles .container {
@@ -186,12 +206,18 @@ header .container {
     max-width: var(--layout-width);
     margin: 10em auto;
     padding: 2.5rem;
-    background: var(--color-background);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-left: 0.5em solid var(--color-secondary);
     border-radius: 0 15px 15px 0;
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+header .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 header h1 {
@@ -237,7 +263,6 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    /* Ocean Gradient */
     background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
@@ -250,6 +275,12 @@ nav ul a {
     text-decoration: none;
     position: relative;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+nav ul a:hover {
+    transform: translateY(-2px);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }
 
 nav ul li { margin: 0.25rem; }
@@ -257,7 +288,7 @@ nav ul li { margin: 0.25rem; }
 nav ul a::after {
     width: var(--layout-width);
     height: 3px;
-    background-color: #fff; /* White foam underline */
+    background-color: #fff;
     opacity: 0;
     content: "";
     position: absolute;
@@ -273,9 +304,11 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 #about section {
     flex: 1;
     padding: 4em 4em;
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     margin: 1rem;
     border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 #about section:nth-child(2) p:nth-of-type(2) {
@@ -301,9 +334,9 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     color: var(--color-primary);
     font-size: 1em;
     cursor: default;
-    transition: 300ms transform ease-in;
+    transition: all 0.3s ease;
     background-color: rgba(255,255,255,0.8);
-    border-radius: 20px; /* Bubble shape */
+    border-radius: 20px;
     display: flex;
     align-items: center;
 }
@@ -325,8 +358,10 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 #guidelines .container {
     padding: 4rem 4rem;
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Contribute Section */
@@ -338,8 +373,9 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 #contribute section {
     padding: 4rem 5rem;
-    background: var(--color-background); /* Glass effect */
-    
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 #contribute section ol {
@@ -375,7 +411,12 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     height: 2em;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 0 5px rgba(255,255,255,0.5); /* Ring effect */
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.5);
+    transition: transform 0.3s ease;
+}
+
+#contribute section li:hover::before {
+    transform: scale(1.1);
 }
 
 #contribute section li {
@@ -415,7 +456,14 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     position: relative;
 }
 
-#files .container a { margin-right: 1em; }
+#files .container a { 
+    margin-right: 1em;
+    transition: transform 0.3s ease;
+}
+
+#files .container a:hover {
+    transform: translateY(-2px);
+}
 
 /* Features Grid */
 .features {
@@ -440,15 +488,44 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     grid-gap: 0.5rem;
     background-color: var(--color-secondary-faded);
     line-height: 1.1;
-    transition: 300ms all ease-in-out;
+    transition: all 0.4s ease;
     margin: 1.5em;
-    border-radius: 50%; /* Porthole look */
+    border-radius: 50%;
     aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Ripple effect on hover */
+.features li > span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.features li > span:hover::after {
+    width: 200%;
+    height: 200%;
 }
 
 .features li > span:hover {
     background-color: var(--color-secondary);
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 168, 150, 0.4);
 }
 
 .features li > span a {
@@ -456,17 +533,8 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     font-size: 1.5rem;
     font-weight: var(--font-weight-strong);
     text-decoration: none;
-}
-
-.features li > span a::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-    border: 0.5em solid rgba(255,255,255,0.3);
-    border-radius: 50%;
+    position: relative;
+    z-index: 1;
 }
 
 .features li > span span:nth-child(2) { position: relative; }
@@ -492,8 +560,10 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     flex-wrap: wrap;
     align-items: center;
     padding: 4em 4em;
-    background: var(--color-background); /* Glass */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .profile h4 {
@@ -511,12 +581,15 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     border: 2px solid currentColor;
     color: var(--color-primary);
     border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .profile .container > a:hover {
     background: var(--color-primary);
     border: 2px solid var(--color-primary);
     color: var(--color-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 105, 148, 0.3);
 }
 
 .profile ul {
@@ -547,12 +620,20 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     position: relative;
     padding: 2.5rem;
     background-color: var(--color-primary);
-    background-image: linear-gradient(4deg, #004e6e -80%, transparent); /* Darker ocean bottom */
+    background-image: linear-gradient(4deg, #004e6e -80%, transparent);
     color: var(--color-light);
     text-align: center;
 }
 
-.page-footer p a { color: inherit; }
+.page-footer p a { 
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.page-footer p a:hover {
+    color: var(--color-secondary);
+}
+
 .page-footer p:last-child { margin-bottom: 0; }
 
 .page-footer ul {
@@ -568,7 +649,11 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 .page-footer ul li {
     margin: 1em;
     flex: 1;
-    transition: 300ms all ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.page-footer ul li:hover {
+    transform: translateY(-3px);
 }
 
 .page-footer ul li a:hover {
@@ -614,7 +699,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     min-height: 3em;
     background-color: var(--color-primary);
     color: #fff;
-    border-radius: 4px; /* Slight roundness */
+    border-radius: 4px;
 }
 
 [class^="link"], .profile .container > a {
@@ -623,7 +708,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     justify-content: center;
     padding: 0 0.75em;
     transform: translate(0, 0);
-    transition: 300ms all ease-in-out;
+    transition: all 0.3s ease;
     font-size: 1.125rem;
     line-height: 1;
     text-align: center;
@@ -632,6 +717,8 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 [class^="link"]:hover, [class^="link"]:focus, .profile .container > a:focus {
     background-color: var(--color-btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(2, 62, 138, 0.3);
 }
 
 [class^="link"]:focus, .profile .container > a:focus {
@@ -642,9 +729,14 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 .page-footer [class^="link"] {
     width: 100%;
     min-height: 2.5em;
-    background-color: rgba(255,255,255,0.1); /* Transparent footer buttons */
+    background-color: rgba(255,255,255,0.1);
     color: var(--color-light);
     border: 1px solid rgba(255,255,255,0.3);
+}
+
+.page-footer [class^="link"]:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: var(--color-secondary);
 }
 
 .link-allstyles { margin-top: 1em; }
@@ -671,7 +763,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 @keyframes rotate {
     from { transform: rotate(0deg) }
-    to { transform: rotate(60deg) }
+    to { transform: rotate(360deg) }
 }
 
 /* MEDIA QUERIES - Layout Adjustments */
@@ -734,12 +826,6 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     #files .container a, .link-allstyles { width: 100%; }
     #files .container a { background-position: 2.5em center; }
     #styles { padding: 2rem; margin: 5vh 0 5vh; }
-    .features li > span a::before {
-        border-left: 0;
-        border-right: 0;
-        border-top: 0.5em solid var(--color-light);
-        border-bottom: 0.5em solid var(--color-light);
-    }
     .page-footer ul li { min-width: 100%; margin: 0.5em; }
     .profile .container > a { margin-left: 0; width: 100%; }
 }
