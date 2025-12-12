@@ -21,7 +21,9 @@
     --font-size-h3: 2rem;
     --font-size-h4: 1.35rem;
     --font-size-text: 1.125rem;
-    --layout-width: 1440px; 
+    /* Layout - Consistent width for all content */
+    --layout-width: 1300px;
+    --content-padding: 3rem;
 }
 
 /* Reset Rules */
@@ -153,11 +155,10 @@ article section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding: var(--content-padding);
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     border-radius: 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -169,17 +170,26 @@ article section:hover {
 }
 
 article .container, .page-footer .container, #styles .container {
-    width: var(--layout-width);
+    width: 100%;
+    max-width: var(--layout-width);
     margin-right: auto;
     margin-left: auto;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
 }
 
-article, #styles { padding: 1rem; }
+article, #styles { 
+    padding: 0;
+}
 
-/* Max Widths */
-#about, #guidelines, #contribute .container, #files .container, aside.profile, #styles .container {
-    max-width: 1440px;
-    margin: 0 auto;
+/* Consistent width for all major sections */
+#about, #guidelines, #contribute, #files, aside.profile, #styles {
+    width: 100%;
+    max-width: var(--layout-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
 }
 
 #guidelines p:nth-of-type(1), #contribute p:nth-of-type(1) {
@@ -200,12 +210,13 @@ header {
     display: grid;
     min-height: 40vh;
     color: var(--color-primary);
+    padding: 0;
 }
 
 header .container {
-    max-width: var(--layout-width);
+    width: 1200px;
     margin: 10em auto;
-    padding: 2.5rem;
+    padding: 2.5rem var(--content-padding);
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     border-left: 0.5em solid var(--color-secondary);
@@ -257,6 +268,7 @@ header .link-github:hover svg {
 
 /* Navigation - Ocean Gradient */
 nav ul {
+    max-width: var(--layout-width);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -299,14 +311,17 @@ nav ul a::after {
 nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 /* About Section */
-#about { display: flex; }
+#about { 
+    display: flex;
+    gap: 2rem;
+}
 
 #about section {
     flex: 1;
-    padding: 4em 4em;
+    padding: var(--content-padding);
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
-    margin: 1rem;
+    margin: 0;
     border-radius: 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
@@ -357,7 +372,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 #guidelines .container {
-    padding: 4rem 4rem;
+    padding: var(--content-padding);
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 10px;
@@ -366,16 +381,16 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 
 /* Contribute Section */
 #contribute {
-    padding: 1em;
-    margin-top: 1em;
-    background-color: transparent;
+    margin-top: 3em;
 }
 
 #contribute section {
-    padding: 4rem 5rem;
+    padding: var(--content-padding);
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3em;
+    border-radius: 10px;
 }
 
 #contribute section ol {
@@ -428,22 +443,23 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 #contribute section:nth-child(2) {
-    padding-top: 4rem;
-    padding-bottom: 0;
+    padding: var(--content-padding);
 }
 
 /* Files Section - Deep Sea Look */
 #files {
     background: linear-gradient(190deg, var(--color-primary) 0%, rgba(38, 125, 171, 0.9) 100%);
-    margin-top: 1em;
+    margin-top: 4em;
+    margin-bottom: 3em;
     border-radius: 10px;
+    padding: 0;
 }
 
 #files h3 {
     color: var(--color-light);
     position: absolute;
     top: -20px;
-    left: 5rem;
+    left: var(--content-padding);
     font-size: 1.5em;
     padding: 0.4em 0.7em;
     background: linear-gradient(10deg, var(--color-secondary), var(--color-primary));
@@ -452,7 +468,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 #files .container {
-    padding: 3em 5em;
+    padding: 3em var(--content-padding);
     position: relative;
 }
 
@@ -468,7 +484,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 /* Features Grid */
 .features {
     position: relative;
-    width: var(--layout-width);
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
 }
 
@@ -553,13 +569,17 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 /* Profile / Aside */
-.profile { margin: 1rem 4rem; padding: 1.25rem; }
+.profile { 
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    padding: 0;
+}
 
 .profile .container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 4em 4em;
+    padding: var(--content-padding);
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 10px;
@@ -767,13 +787,23 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 /* MEDIA QUERIES - Layout Adjustments */
-@media (max-width: 1440px) {
-    #about section, #guidelines .container { padding: 1em; }
-    #contribute section { padding: 1em 2em; }
-    #files .container { padding-left: 2em; padding-right: 2em; }
-    #files h3 { left: 2rem; }
-    aside.profile { margin: 1rem 2rem; padding: 0; }
-    .profile .container { padding: 1em 0; }
+@media (max-width: 1240px) {
+    :root {
+        --content-padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --content-padding: 1.5rem;
+    }
+    
+    #about section, #guidelines .container { padding: var(--content-padding); }
+    #contribute section { padding: var(--content-padding); }
+    #files .container { padding: 3em var(--content-padding); }
+    #files h3 { left: var(--content-padding); }
+    aside.profile { margin-top: 2rem; margin-bottom: 3rem; padding: 0; }
+    .profile .container { padding: var(--content-padding); }
     .profile .profile-title, .profile .profile-author { border-right: none; }
     .profile ul li { padding: 0; }
     .profile ul { flex-direction: column; }
@@ -796,7 +826,10 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
     nav ul {
         background: linear-gradient(30deg, var(--color-secondary), var(--color-primary) 91%, var(--color-primary) 70%);
     }
-    #about { flex-direction: column; }
+    #about { 
+        flex-direction: column;
+        gap: 1.5rem;
+    }
     #contribute section ol { flex-direction: column; }
     #contribute section ol::before { display: none; }
     #contribute section li { position: relative; }
@@ -810,7 +843,7 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
         left: 0;
         z-index: -1;
     }
-    #contribute section:nth-child(2) { padding-bottom: 2em; }
+    #contribute section { padding: var(--content-padding); }
     #files .container a { margin-top: 1em; }
 }
 
@@ -821,11 +854,15 @@ nav ul a:hover::after, nav ul a:focus::after { opacity: 1; }
 }
 
 @media (max-width: 500px) {
+    :root {
+        --content-padding: 1rem;
+    }
+    
     header .link-github { min-height: 2em; padding: 0.3em 0.7em; }
-    header .container { margin: 3em auto 0 auto; padding: 3.5rem 2.5rem 2.5rem 2.5rem; }
+    header .container { margin: 3em auto 0 auto; padding: 2.5rem var(--content-padding); }
     #files .container a, .link-allstyles { width: 100%; }
     #files .container a { background-position: 2.5em center; }
-    #styles { padding: 2rem; margin: 5vh 0 5vh; }
+    #styles { margin: 5vh 0 5vh; }
     .page-footer ul li { min-width: 100%; margin: 0.5em; }
     .profile .container > a { margin-left: 0; width: 100%; }
 }
